@@ -1,0 +1,48 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        x:Class="Pomo.MainWindow"
+        mc:Ignorable="d"
+        Title="Pomo" Height="350" Width="280.812" MinWidth="100" MinHeight="350" ResizeMode="CanMinimize" Closed="Window_Closed">
+    <Window.Resources>
+        <ControlTemplate x:Key="SettingsButtonTemplate" TargetType="{x:Type Button}">
+            <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsDefaulted" Value="True">
+                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                </Trigger>
+                <Trigger Property="ToggleButton.IsChecked" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="#FFBCDDEE"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FF245A83"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" TargetName="border" Value="#FFF4F4F4"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FFADB2B5"/>
+                    <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="#FF838383"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
+    <Grid HorizontalAlignment="Left" Height="319" VerticalAlignment="Top" Width="271" Background="White">
+        <Button x:Name="Settings" Content="" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="32" Height="32" BorderBrush="{x:Null}" Foreground="{x:Null}" Template="{DynamicResource SettingsButtonTemplate}" Click="Settings_Click" Cursor="Hand">
+            <Button.Background>
+                <ImageBrush ImageSource="Images/settings.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="Reload" Content="" HorizontalAlignment="Left" Margin="225,10,0,0" VerticalAlignment="Top" Width="32" Height="32" BorderBrush="{x:Null}" Foreground="{x:Null}" Template="{DynamicResource SettingsButtonTemplate}" Click="Reload_Click" Cursor="Hand">
+            <Button.Background>
+                <ImageBrush ImageSource="Images/reload.png"/>
+            </Button.Background>
+        </Button>
+        <Image x:Name="Tomato" Margin="56,84,56,85" Source="Images/tomato_512.png"/>
+        <Label x:Name="Time" Content="25:00" Margin="56,84,56,0" VerticalAlignment="Top" Height="150" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="48" FontFamily="Segoe UI Light" Foreground="White" MouseLeftButtonUp="Time_MouseLeftButtonUp" Cursor="Hand"/>
+    </Grid>
+</Window>

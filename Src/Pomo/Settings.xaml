@@ -1,0 +1,57 @@
+﻿<Window x:Class="Pomo.Settings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Pomo"
+        mc:Ignorable="d"
+        Title="Settings" Height="199.565" Width="366.978" ResizeMode="NoResize">
+    <Window.Resources>
+        <ControlTemplate x:Key="SettingsButtonTemplate" TargetType="{x:Type Button}">
+            <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsDefaulted" Value="True">
+                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True"/>
+                <Trigger Property="IsPressed" Value="True"/>
+                <Trigger Property="ToggleButton.IsChecked" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="#FFBCDDEE"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FF245A83"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" TargetName="border" Value="#FFF4F4F4"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FFADB2B5"/>
+                    <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="#FF838383"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
+    <Grid>
+        <Label x:Name="WorkTime" Content="n minutes" HorizontalAlignment="Left" Margin="276,10,0,0" VerticalAlignment="Top" Height="18" Padding="0"/>
+        <Label x:Name="BreakTime" Content="n minutes" HorizontalAlignment="Left" Margin="276,33,0,0" VerticalAlignment="Top" Height="18" Padding="0"/>
+        <Label x:Name="LongBreakTime" Content="n minutes" HorizontalAlignment="Left" Margin="276,56,0,0" VerticalAlignment="Top" Height="18" Padding="0"/>
+        <Label x:Name="Iterations" Content="n iterations" HorizontalAlignment="Left" Margin="276,79,0,0" VerticalAlignment="Top" Height="18" Padding="0"/>
+        <Label x:Name="WorkLabel" Content="Work Period" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="18" Padding="0"/>
+        <Slider x:Name="WorkSlider" HorizontalAlignment="Left" Margin="153,10,0,0" VerticalAlignment="Top" Width="118" SmallChange="1" Minimum="1" Maximum="59" ValueChanged="WorkSlider_ValueChanged" IsSnapToTickEnabled="True"/>
+        <Label x:Name="BreakLabel" Content="Break Period" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top" Height="18" Padding="0"/>
+        <Slider x:Name="BreakSlider" HorizontalAlignment="Left" Margin="153,33,0,0" VerticalAlignment="Top" Width="118" Maximum="59" SmallChange="1" Minimum="1" ValueChanged="BreakSlider_ValueChanged" IsSnapToTickEnabled="True"/>
+        <Label x:Name="LongBreakLabel" Content="Long Break Period" HorizontalAlignment="Left" Margin="10,56,0,0" VerticalAlignment="Top" Height="18" Padding="0"/>
+        <Slider x:Name="LongBreakSlider" HorizontalAlignment="Left" Margin="153,56,0,0" VerticalAlignment="Top" Width="118" SmallChange="1" Minimum="1" Maximum="59" ValueChanged="LongBreakSlider_ValueChanged" IsSnapToTickEnabled="True"/>
+        <Label x:Name="IterationsLabel" Content="Iterations Until Long Break" HorizontalAlignment="Left" Margin="10,79,0,0" VerticalAlignment="Top" Height="18" Padding="0"/>
+        <Slider x:Name="IterationsSlider" HorizontalAlignment="Left" Margin="153,79,0,0" VerticalAlignment="Top" Width="118" SmallChange="1" Minimum="1" ValueChanged="IterationsSlider_ValueChanged" IsSnapToTickEnabled="True"/>
+        <Button x:Name="Save" Content="" HorizontalAlignment="Left" Margin="10,115,0,0" VerticalAlignment="Top" Width="32" Height="32" BorderBrush="{x:Null}" Foreground="{x:Null}" Template="{DynamicResource SettingsButtonTemplate}" Click="Save_Click" Cursor="Hand">
+            <Button.Background>
+                <ImageBrush ImageSource="Images/save.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="Cancel" Content="" HorizontalAlignment="Left" Margin="303,115,0,0" VerticalAlignment="Top" Width="32" Height="32" BorderBrush="{x:Null}" Foreground="{x:Null}" Template="{DynamicResource SettingsButtonTemplate}" Click="Cancel_Click" Cursor="Hand">
+            <Button.Background>
+                <ImageBrush ImageSource="Images/cancel.png"/>
+            </Button.Background>
+        </Button>
+
+    </Grid>
+</Window>
