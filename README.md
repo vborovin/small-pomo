@@ -1,7 +1,7 @@
 # small-pomo
 Very simple C# WPF Pomodoro with notifications
 
-![Screenshot](http://i.imgur.com/4F8W6sc.png)
+![Screenshot](https://i.imgur.com/Uq8q1yt.png)
 
 To-do:
 - [ ] Sending to tray
