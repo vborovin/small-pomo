@@ -43,7 +43,6 @@
             breakImage = new BitmapImage(new Uri("pack://application:,,,/Pomo;component/Images/tomato_512_inv.png"));
 
             this.application = application;
-            Icon = application.appIcon;
 
             InitializeComponent();
 
@@ -150,6 +149,7 @@
         private void Window_Closed(object sender, EventArgs e)
         {
             notifier.Dispose();
+            application.Shutdown();
         }
 
         public void ChangeState(WindowState windowState)

@@ -14,7 +14,7 @@
     public partial class App : Application
     {
         public TaskbarIcon taskbarIcon;
-        public BitmapImage appIcon;
+        BitmapImage appIcon;
 
         public App()
         {
