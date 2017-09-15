@@ -44,12 +44,12 @@
         <Slider x:Name="IterationsSlider" HorizontalAlignment="Left" Margin="153,79,0,0" VerticalAlignment="Top" Width="118" SmallChange="1" Minimum="1" ValueChanged="IterationsSlider_ValueChanged" IsSnapToTickEnabled="True"/>
         <Button x:Name="Save" Content="" HorizontalAlignment="Left" Margin="10,115,0,0" VerticalAlignment="Top" Width="32" Height="32" BorderBrush="{x:Null}" Foreground="{x:Null}" Template="{DynamicResource SettingsButtonTemplate}" Click="Save_Click" Cursor="Hand">
             <Button.Background>
-                <ImageBrush ImageSource="Images/save.png"/>
+                <ImageBrush ImageSource="../Images/save.png"/>
             </Button.Background>
         </Button>
         <Button x:Name="Cancel" Content="" HorizontalAlignment="Left" Margin="303,115,0,0" VerticalAlignment="Top" Width="32" Height="32" BorderBrush="{x:Null}" Foreground="{x:Null}" Template="{DynamicResource SettingsButtonTemplate}" Click="Cancel_Click" Cursor="Hand">
             <Button.Background>
-                <ImageBrush ImageSource="Images/cancel.png"/>
+                <ImageBrush ImageSource="../Images/cancel.png"/>
             </Button.Background>
         </Button>
 

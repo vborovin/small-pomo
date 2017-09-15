@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         x:Class="Pomo.MainWindow"
         mc:Ignorable="d"
-        Title="Pomo" Height="350" Width="280.812" MinWidth="100" MinHeight="350" ResizeMode="CanMinimize" Closed="Window_Closed">
+        Title="Pomo" Height="350" Width="280.812" MinWidth="100" MinHeight="350" ResizeMode="CanMinimize" Closed="Window_Closed" StateChanged="Window_StateChanged">
     <Window.Resources>
         <ControlTemplate x:Key="SettingsButtonTemplate" TargetType="{x:Type Button}">
             <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
@@ -34,15 +34,15 @@
     <Grid HorizontalAlignment="Left" Height="319" VerticalAlignment="Top" Width="271" Background="White">
         <Button x:Name="Settings" Content="" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="32" Height="32" BorderBrush="{x:Null}" Foreground="{x:Null}" Template="{DynamicResource SettingsButtonTemplate}" Click="Settings_Click" Cursor="Hand">
             <Button.Background>
-                <ImageBrush ImageSource="Images/settings.png"/>
+                <ImageBrush ImageSource="../Images/settings.png"/>
             </Button.Background>
         </Button>
         <Button x:Name="Reload" Content="" HorizontalAlignment="Left" Margin="225,10,0,0" VerticalAlignment="Top" Width="32" Height="32" BorderBrush="{x:Null}" Foreground="{x:Null}" Template="{DynamicResource SettingsButtonTemplate}" Click="Reload_Click" Cursor="Hand">
             <Button.Background>
-                <ImageBrush ImageSource="Images/reload.png"/>
+                <ImageBrush ImageSource="../Images/reload.png"/>
             </Button.Background>
         </Button>
-        <Image x:Name="Tomato" Margin="56,84,56,85" Source="Images/tomato_512.png"/>
+        <Image x:Name="Tomato" Margin="56,84,56,85" Source="../Images/tomato_512.png"/>
         <Label x:Name="Time" Content="25:00" Margin="56,84,56,0" VerticalAlignment="Top" Height="150" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="48" FontFamily="Segoe UI Light" Foreground="White" MouseLeftButtonUp="Time_MouseLeftButtonUp" Cursor="Hand"/>
     </Grid>
 </Window>

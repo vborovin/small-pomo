@@ -1,25 +1,27 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Input;
-using System.Windows.Media.Imaging;
-using System.Windows.Threading;
-
-using ToastNotifications;
-using ToastNotifications.Lifetime;
-using ToastNotifications.Position;
-using ToastNotifications.Messages;
-
-namespace Pomo
+﻿namespace Pomo
 {
+    using System;
+    using System.Windows;
+    using System.Windows.Input;
+    using System.Windows.Media.Imaging;
+    using System.Windows.Threading;
+
+    using ToastNotifications;
+    using ToastNotifications.Lifetime;
+    using ToastNotifications.Position;
+    using ToastNotifications.Messages;
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+        App application;
+
         DispatcherTimer timer;
         TimerControl timerControl;
-        BitmapImage workImage = new BitmapImage(new Uri("pack://application:,,,/Pomo;component/Images/tomato_512.png"));
-        BitmapImage breakImage = new BitmapImage(new Uri("pack://application:,,,/Pomo;component/Images/tomato_512_inv.png"));
+        BitmapImage workImage;
+        BitmapImage breakImage;
 
         Notifier notifier = new Notifier(cfg =>
         {
@@ -35,8 +37,14 @@ namespace Pomo
             cfg.Dispatcher = Application.Current.Dispatcher;
         });
 
-        public MainWindow()
+        public MainWindow(App application)
         {
+            workImage = new BitmapImage(new Uri("pack://application:,,,/Pomo;component/Images/tomato_512.png"));
+            breakImage = new BitmapImage(new Uri("pack://application:,,,/Pomo;component/Images/tomato_512_inv.png"));
+
+            this.application = application;
+            Icon = application.appIcon;
+
             InitializeComponent();
 
             timerControl = new TimerControl();
@@ -142,6 +150,37 @@ namespace Pomo
         private void Window_Closed(object sender, EventArgs e)
         {
             notifier.Dispose();
+        }
+
+        public void ChangeState(WindowState windowState)
+        {
+            this.WindowState = windowState;
+            ChangeState();
+        }
+
+        private void ChangeState()
+        {
+            switch (WindowState)
+            {
+                case (WindowState.Minimized): application.taskbarIcon.Visibility = Visibility.Visible; Visibility = Visibility.Hidden; break;
+                case (WindowState.Normal):
+                case (WindowState.Maximized):
+                    {
+                        application.taskbarIcon.Visibility = Visibility.Collapsed;
+                        Visibility = Visibility.Visible;
+                        this.Activate();
+                        this.Topmost = true;
+                        this.Topmost = false;
+                        this.Focus();
+                        break;
+                    }
+            }
+        }
+
+        private void Window_StateChanged(object sender, EventArgs e)
+        {
+            var state = WindowState;
+            ChangeState();
         }
     }
 }
