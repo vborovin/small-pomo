@@ -75,17 +75,21 @@ namespace Pomo
 
             mainWindow.ReloadTimer();
 
-            mainWindow.Settings.IsEnabled = true;
-
             Properties.Settings.Default.Save();
 
-            this.Close();
+            Close();
+        }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+
+            mainWindow.Settings.IsEnabled = true;
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
-        {
-            mainWindow.Settings.IsEnabled = true;
-            this.Close();
+        {            
+            Close();
         }
     }
 }
