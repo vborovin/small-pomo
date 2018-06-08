@@ -17,7 +17,14 @@
         public void Execute(object parameter)
         {
             var window = parameter as MainWindow;
+
+            if (!window.IsVisible)
+            {
+                window.Show();
+            }
+
             window.ChangeState(WindowState.Normal);
+            window.Activate();
         }
     }
 }
