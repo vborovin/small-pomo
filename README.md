@@ -5,7 +5,7 @@ Very simple C# WPF Pomodoro with notifications
 
 To-do:
 - [x] Sending to tray
-- [ ] Bring window to foreground after switching from tray
+- [x] Bring window to foreground after switching from tray
 
 Credits:
 Icons made by [Freepik](http://www.freepik.com/) from www.flaticon.com 
